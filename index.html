@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>ANTINA SERVER | BGMI 4.4 ELITE</title>
+  <!-- Premium Fonts: Lemon Milk style + Ghastly Panic vibe -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', 'Orbitron', sans-serif;
+      background: #000000;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* FULL BACKGROUND IMAGE - DARK PREMIUM OVERLAY */
+    body {
+      background-image: url('https://i.postimg.cc/VkFXSJKr/image-search-1779216112962.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* CLICK RIPPLE - GOLDEN TOUCH */
+    .click-ripple {
+      position: fixed;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #d4af37, #8b691b);
+      transform: translate(-50%, -50%) scale(0);
+      animation: ripple 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @keyframes ripple {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0.7; }
+      100% { transform: translate(-50%, -50%) scale(20); opacity: 0; }
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ========= LOGIN SECTION - PREMIUM, NO SQUARE BORDERS ========= */
+    .login-fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .login-card {
+      width: 90%;
+      max-width: 520px;
+      background: rgba(8, 5, 6, 0.55);
+      backdrop-filter: blur(18px);
+      border-radius: 56px;
+      border: none;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(191, 143, 63, 0.3);
+      padding: 2.8rem 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: slideUpFade 0.5s ease-out;
+    }
+
+    .login-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 35px 55px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(191, 143, 63, 0.5);
+    }
+
+    @keyframes slideUpFade {
+      0% { opacity: 0; transform: translateY(35px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo-premium {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      background: #0a0507aa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #bf8f3f;
+      box-shadow: 0 0 25px rgba(191, 143, 63, 0.4);
+      overflow: hidden;
+    }
+
+    .logo-premium img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* LEMON MILK STYLE - BOLD CLEAN */
+    .server-title {
+      font-family: 'Montserrat', 'Orbitron', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, #f5e7c8, #d4af37, #f5e7c8);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+      margin-bottom: 2rem;
+    }
+
+    .input-premium {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-family: 'Montserrat', monospace;
+      font-weight: 500;
+      background: rgba(15, 10, 12, 0.7);
+      border: 1.5px solid rgba(191, 143, 63, 0.6);
+      border-radius: 60px;
+      outline: none;
+      transition: all 0.25s;
+      color: #ecd9b4;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(4px);
+    }
+
+    .input-premium:focus {
+      border-color: #e6bc6a;
+      box-shadow: 0 0 18px rgba(191, 143, 63, 0.4);
+      background: #0f0709;
+      color: #fff5e6;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* BUTTONS - MATTE + CLASSY */
+    .btn-mad {
+      padding: 0.85rem 2rem;
+      font-weight: 700;
+      border-radius: 60px;
+      border: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 1.2px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      color: #e9c891;
+      border: 1px solid rgba(180, 130, 50, 0.7);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .btn-primary-mad {
+      background: #2c2016;
+      border: 1px solid #c9a44b;
+      color: #f7e5c2;
+      background-image: linear-gradient(145deg, #241a11, #3d2c1d);
+    }
+
+    .btn-primary-mad:hover {
+      transform: translateY(-3px);
+      background: #4a3422;
+      border-color: #e0b256;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      color: #fff7ea;
+    }
+
+    .btn-outline-mad:hover {
+      background: rgba(191, 143, 63, 0.2);
+      border-color: #bf8f3f;
+      transform: translateY(-3px);
+      color: #ffefcf;
+    }
+
+    /* SPECIFIC ERROR MESSAGES - DIFFERENTIATED */
+    .error-msg {
+      margin-top: 1.2rem;
+      padding: 0.7rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      backdrop-filter: blur(8px);
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+
+    .error-invalid {
+      background: rgba(180, 60, 50, 0.5);
+      color: #ffb4a2;
+      border-left: 4px solid #ff6b4a;
+    }
+
+    .error-max-device {
+      background: rgba(200, 120, 30, 0.5);
+      color: #ffdd99;
+      border-left: 4px solid #ffaa33;
+    }
+
+    .error-expired {
+      background: rgba(100, 40, 20, 0.6);
+      color: #e6b17e;
+      border-left: 4px solid #bd7139;
+    }
+
+    .loading-msg {
+      color: #dbba7a;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    /* ========= DASHBOARD - PREMIUM IMPROVED UI/UX ========= */
+    .dashboard-mad {
+      width: 100%;
+      animation: fadeScale 0.45s ease-out;
+    }
+
+    .header-mad {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+      border-radius: 100px;
+      padding: 0.7rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(191, 143, 63, 0.45);
+    }
+
+    .key-status {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 600;
+      color: #e6c99c;
+      font-family: 'Montserrat', monospace;
+    }
+
+    .timer-mad {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #ebd4a0, #c69c3e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .logout-mad {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #9e792f;
+      border-radius: 60px;
+      padding: 0.6rem 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      color: #e7c88b;
+      transition: 0.25s;
+    }
+
+    .logout-mad:hover {
+      background: #4a3220;
+      border-color: #e4ae54;
+      color: #fff3db;
+      transform: scale(1.02);
+    }
+
+    .grid-mad {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 780px) {
+      .grid-mad { grid-template-columns: 1fr; }
+    }
+
+    .panel-mad {
+      background: rgba(5, 3, 4, 0.6);
+      backdrop-filter: blur(18px);
+      border-radius: 48px;
+      border: 1px solid rgba(180, 130, 50, 0.4);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.45);
+      padding: 2rem;
+      transition: all 0.25s;
+    }
+
+    .panel-mad:hover {
+      transform: translateY(-4px);
+      border-color: rgba(191, 143, 63, 0.7);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.55);
+    }
+
+    .panel-mad h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+      margin-bottom: 1.8rem;
+      color: #e9ca8a;
+      border-left: 5px solid #c9943a;
+      padding-left: 1rem;
+    }
+
+    .btn-fill-mad {
+      background: #1c130c;
+      border: 1px solid #b38638;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 60px;
+      font-weight: 800;
+      color: #eed5a3;
+      margin-bottom: 1.8rem;
+      cursor: pointer;
+      transition: 0.25s;
+      font-size: 1rem;
+    }
+
+    .btn-fill-mad:active { transform: scale(0.98); }
+    .btn-fill-mad:hover { background: #352214; border-color: #cc9f4a; letter-spacing: 0.5px; }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      margin: 1.2rem 0;
+      font-weight: 600;
+      color: #eac981;
+      font-size: 0.95rem;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 5px;
+      -webkit-appearance: none;
+      background: #4a2e1a;
+      border-radius: 10px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      background: #dba448;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #f5d38c;
+      box-shadow: 0 0 8px #ce9a45;
+    }
+
+    .attack-btn-mad {
+      width: 100%;
+      background: #1f140b;
+      border: 1px solid #b5822f;
+      font-weight: 800;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      padding: 1rem;
+      border-radius: 60px;
+      color: #f7e0ae;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .attack-btn-mad:disabled {
+      opacity: 0.5;
+      background: #2a1a0e;
+      cursor: not-allowed;
+    }
+
+    .attack-btn-mad:hover:not(:disabled) {
+      background: #3d2819;
+      border-color: #dcaa50;
+      transform: scale(1.01);
+      letter-spacing: 0.8px;
+    }
+
+    .history-list {
+      max-height: 280px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      padding-right: 6px;
+    }
+
+    .history-item-mad {
+      background: rgba(10, 5, 7, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 36px;
+      padding: 1rem 1.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 5px solid #c9943a;
+      color: #ebd7ae;
+      transition: 0.1s;
+    }
+
+    .footer-mad {
+      text-align: center;
+      margin-top: 2.8rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .footer-mad a {
+      color: #ddb263;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      transition: 0.2s;
+      background: rgba(0,0,0,0.4);
+      padding: 0.5rem 1.5rem;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+    }
+
+    .footer-mad a:hover {
+      color: #f3d48c;
+      background: rgba(0,0,0,0.6);
+    }
+
+    @keyframes fadeScale {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #1f150e; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: #ad7d38; border-radius: 10px; }
+  </style>
+</head>
+<body>
+<div id="app" class="app-container"></div>
+
+<script>
+  (function(){
+    // PREMIUM CLICK SOUND + RIPPLE
+    let clickAudio = null;
+    function initAudio() {
+      try {
+        clickAudio = new Audio('https://www.image2url.com/r2/default/audio/1778018965117-6ec73e30-7109-4aa2-a4e2-1101545caef5.mp3');
+        clickAudio.volume = 0.35;
+        clickAudio.preload = 'auto';
+      } catch(e) { console.log('audio init warn'); }
+    }
+    function playRipple(e) {
+      if (!clickAudio) initAudio();
+      if (e && e.clientX && e.clientY) {
+        let ripple = document.createElement('div');
+        ripple.className = 'click-ripple';
+        ripple.style.left = e.clientX + 'px';
+        ripple.style.top = e.clientY + 'px';
+        document.body.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 500);
+      }
+      if (clickAudio) {
+        let clone = clickAudio.cloneNode();
+        clone.volume = 0.35;
+        clone.play().catch(()=>{});
+      }
+    }
+    document.body.addEventListener('click', playRipple);
+    
+    // ============ APP CORE ============
+    let appContainer = document.getElementById('app');
+    let attackInterval = null;
+    let attackActive = false;
+    let attackLogs = [];
+    let ipFilled = false;
+    let currentDuration = 60;
+
+    function genId() {
+      return 'id_' + Date.now() + '_' + Math.random().toString(36).substr(2, 8);
+    }
+    function getDeviceId() {
+      let stored = localStorage.getItem('antina_device_id');
+      if (!stored) {
+        stored = 'antina_' + genId();
+        localStorage.setItem('antina_device_id', stored);
+      }
+      return stored;
+    }
+    
+    // API CALL with enhanced error classification
+    async function callValidationApi(key, device) {
+      try {
+        let res = await fetch('https://itnvhvamjipxtqwfuezm.supabase.co/functions/v1/validate-key', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key: key, device_id: device })
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        let json = await res.json();
+        console.log('API response:', json);
+        return json;
+      } catch(err) {
+        console.warn(err);
+        throw new Error('NETWORK_ERROR');
+      }
+    }
+    
+    // login handler with specific error types
+    async function attemptLogin(keyValue) {
+      let deviceId = getDeviceId();
+      let errDiv = document.getElementById('loginErrorMsg');
+      let loadDiv = document.getElementById('loadingMsg');
+      if (loadDiv) loadDiv.style.display = 'block';
+      if (errDiv) {
+        errDiv.innerText = '';
+        errDiv.className = 'error-msg'; // reset class
+      }
+      
+      try {
+        let result = await callValidationApi(keyValue, deviceId);
+        
+        // 1) KEY EXPIRED scenario
+        if (result && result.valid === false && result.reason === 'expired') {
+          if (errDiv) {
+            errDiv.innerText = "⌛ KEY EXPIRED • ACCESS DENIED";
+            errDiv.className = 'error-msg error-expired';
+          }
+          if (loadDiv) loadDiv.style.display = 'none';
+          return;
+        }
+        
+        // 2) MAX DEVICE REACHED (another person already using key)
+        if (result && result.valid === false && (result.reason === 'max_devices' || result.error === 'max_devices' || (result.message && result.message.includes('device')))) {
+          if (errDiv) {
+            errDiv.innerText = "⚠️ MAX DEVICE REACHED • KEY ALREADY ACTIVE ELSEWHERE";
+            errDiv.className = 'error-msg error-max-device';
+          }
+          if (loadDiv) loadDiv.style.display = 'none';
+          return;
+        }
+        
+        // 3) INVALID KEY (wrong key)
+        if (!result || result.valid !== true) {
+          if (errDiv) {
+            errDiv.innerText = "❌ INVALID KEY • ACCESS DENIED";
+            errDiv.className = 'error-msg error-invalid';
+          }
+          if (loadDiv) loadDiv.style.display = 'none';
+          return;
+        }
+        
+        // 4) VALID KEY: extract expiry
+        let expiryValue = result.expiry || result.expires_at || result.valid_until || result.end_time;
+        if (!expiryValue) throw new Error('NO_EXPIRY');
+        
+        let expiryMs = (typeof expiryValue === 'string') ? Date.parse(expiryValue) : expiryValue;
+        if (typeof expiryMs === 'number' && expiryMs < 1e10) expiryMs *= 1000;
+        
+        if (expiryMs <= Date.now()) {
+          if (errDiv) {
+            errDiv.innerText = "⌛ KEY EXPIRED • RENEW REQUIRED";
+            errDiv.className = 'error-msg error-expired';
+          }
+          if (loadDiv) loadDiv.style.display = 'none';
+          return;
+        }
+        
+        // SUCCESS
+        localStorage.setItem('antina_key', keyValue);
+        localStorage.setItem('antina_expiry', expiryMs);
+        if (loadDiv) loadDiv.style.display = 'none';
+        renderDashboard();
+        
+      } catch(error) {
+        console.error(error);
+        if (errDiv) {
+          errDiv.innerText = "⚠️ NETWORK ERROR • CHECK CONNECTION";
+          errDiv.className = 'error-msg error-invalid';
+        }
+        if (loadDiv) loadDiv.style.display = 'none';
+      }
+    }
+    
+    function autoLogin() {
+      let savedKey = localStorage.getItem('antina_key');
+      let savedExp = localStorage.getItem('antina_expiry');
+      if (savedKey && savedExp && Date.now() < parseInt(savedExp)) {
+        renderDashboard();
+        return true;
+      }
+      renderLogin();
+      return false;
+    }
+    
+    function logoutUser() {
+      if (attackInterval) clearInterval(attackInterval);
+      attackActive = false;
+      ipFilled = false;
+      attackLogs = [];
+      localStorage.removeItem('antina_key');
+      localStorage.removeItem('antina_expiry');
+      renderLogin();
+    }
+    
+    function formatTimeLeft(ms) {
+      if (ms <= 0) return 'EXPIRED';
+      let days = Math.floor(ms / 86400000);
+      let hours = Math.floor((ms % 86400000) / 3600000);
+      let mins = Math.floor((ms % 3600000) / 60000);
+      if (days > 0) return `${days}d ${hours}h`;
+      if (hours > 0) return `${hours}h ${mins}m`;
+      return `${mins}m`;
+    }
+    
+    function updateExpiryClock() {
+      let timerSpan = document.getElementById('expiryTimer');
+      if (!timerSpan) return;
+      let expiryRaw = localStorage.getItem('antina_expiry');
+      if (!expiryRaw) return;
+      let remain = parseInt(expiryRaw) - Date.now();
+      if (remain <= 0) {
+        timerSpan.innerText = "EXPIRED";
+        logoutUser();
+      } else {
+        timerSpan.innerText = formatTimeLeft(remain);
+      }
+    }
+    
+    function renderHistoryPanel() {
+      let container = document.getElementById('historyList');
+      if (!container) return;
+      if (attackLogs.length === 0) {
+        container.innerHTML = '<div style="text-align:center; padding:1rem; opacity:0.65;">⚔️ NO STRIKES RECORDED</div>';
+        return;
+      }
+      container.innerHTML = '';
+      attackLogs.forEach(log => {
+        let div = document.createElement('div');
+        div.className = 'history-item-mad';
+        div.setAttribute('data-id', log.id);
+        let leftSec = log.status === 'Running' ? log.remaining : 0;
+        div.innerHTML = `
+          <div>
+            <div style="font-weight:800;">⚡ ${log.duration}s STRIKE</div>
+            <div style="font-size:0.75rem; margin-top:4px;"><span class="liveSec">${leftSec}</span> secs left</div>
+            <span style="font-size:0.7rem; font-weight:600;">${log.status}</span>
+          </div>
+          <i class="fas fa-skull-crossbones" style="color:#c9943a; font-size:1.2rem;"></i>
+        `;
+        container.appendChild(div);
+      });
+    }
+    
+    function updateAttackTick() {
+      let anyAlive = false;
+      for (let i = 0; i < attackLogs.length; i++) {
+        let a = attackLogs[i];
+        if (a.status === 'Running') {
+          anyAlive = true;
+          let now = Date.now();
+          let newRem = Math.max(0, Math.ceil((a.endTime - now) / 1000));
+          a.remaining = newRem;
+          if (newRem <= 0) {
+            a.status = 'Completed';
+            let row = document.querySelector(`.history-item-mad[data-id='${a.id}']`);
+            if (row) {
+              let statusSpan = row.querySelector('span:last-child');
+              if (statusSpan) statusSpan.innerText = 'Completed';
+              let secSpan = row.querySelector('.liveSec');
+              if (secSpan) secSpan.innerText = '0';
+            }
+          } else {
+            let row = document.querySelector(`.history-item-mad[data-id='${a.id}']`);
+            if (row) {
+              let secSpan = row.querySelector('.liveSec');
+              if (secSpan) secSpan.innerText = a.remaining;
+            }
+          }
+        }
+      }
+      attackActive = anyAlive;
+      let attackButton = document.getElementById('attackBtn');
+      if (attackButton) attackButton.disabled = !ipFilled || attackActive;
+      if (!anyAlive && attackInterval) {
+        clearInterval(attackInterval);
+        attackInterval = null;
+        renderHistoryPanel();
+      }
+    }
+    
+    function launchStrike(seconds) {
+      if (attackActive) return false;
+      if (!ipFilled) return false;
+      attackActive = true;
+      let newId = 'strike_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+      let endAt = Date.now() + seconds * 1000;
+      attackLogs.unshift({
+        id: newId,
+        duration: seconds,
+        remaining: seconds,
+        status: 'Running',
+        endTime: endAt
+      });
+      renderHistoryPanel();
+      if (attackInterval) clearInterval(attackInterval);
+      attackInterval = setInterval(() => updateAttackTick(), 200);
+      let btn = document.getElementById('attackBtn');
+      if (btn) btn.disabled = true;
+      return true;
+    }
+    
+    function fillIpPort() {
+      ipFilled = true;
+      let attackButton = document.getElementById('attackBtn');
+      if (attackButton && !attackActive) attackButton.disabled = false;
+      let msgDiv = document.getElementById('fillMsg');
+      if (msgDiv) {
+        msgDiv.innerText = "✓ IP & PORT CONFIGURED • READY TO STRIKE";
+        msgDiv.style.color = "#e0bc7a";
+        setTimeout(() => { if(msgDiv) msgDiv.innerText = ""; }, 2000);
+      }
+    }
+    
+    function renderDashboard() {
+      let expiryVal = localStorage.getItem('antina_expiry');
+      if (!expiryVal || Date.now() >= parseInt(expiryVal)) { logoutUser(); return; }
+      appContainer.innerHTML = `
+        <div class="dashboard-mad">
+          <div class="header-mad">
+            <div class="key-status">
+              <i class="fas fa-crown" style="color:#e6bc6a;"></i>
+              <span>KEY STATUS</span>
+              <span class="timer-mad" id="expiryTimer">--</span>
+            </div>
+            <button class="logout-mad" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> EXIT</button>
+          </div>
+          <div class="grid-mad">
+            <div class="panel-mad">
+              <h3><i class="fas fa-bolt"></i> COMMAND</h3>
+              <button class="btn-fill-mad" id="fillIpBtn"><i class="fas fa-plug"></i> FILL IP & PORT</button>
+              <div id="fillMsg" style="min-height: 34px; font-size:0.8rem; margin-bottom: 0.5rem;"></div>
+              <div class="slider-label">
+                <span>⚡ DURATION</span>
+                <span id="durValue" style="font-weight:800;">60 SEC</span>
+              </div>
+              <input type="range" id="durationSlider" min="10" max="400" value="60" step="1">
+              <button class="attack-btn-mad" id="attackBtn" disabled><i class="fas fa-skull"></i> CONFIRM STRIKE</button>
+            </div>
+            <div class="panel-mad">
+              <h3><i class="fas fa-history"></i> HISTORY</h3>
+              <div id="historyList" class="history-list">⚔️ NO STRIKES</div>
+            </div>
+          </div>
+          <div class="footer-mad">
+            <a href="https://t.me/antinaseller" target="_blank"><i class="fab fa-telegram"></i> TG: @antinaseller</a>
+          </div>
+        </div>
+      `;
+      updateExpiryClock();
+      let expiryInterval = setInterval(() => {
+        if (document.getElementById('expiryTimer')) updateExpiryClock();
+        else clearInterval(expiryInterval);
+      }, 1000);
+      let slider = document.getElementById('durationSlider');
+      let durSpan = document.getElementById('durValue');
+      let attackBtn = document.getElementById('attackBtn');
+      let fillBtn = document.getElementById('fillIpBtn');
+      let logoutBtn = document.getElementById('logoutBtn');
+      if (slider) {
+        slider.addEventListener('input', (e) => {
+          let val = e.target.value;
+          durSpan.innerText = val + " SEC";
+          currentDuration = parseInt(val);
+        });
+      }
+      if (fillBtn) fillBtn.addEventListener('click', fillIpPort);
+      if (attackBtn) {
+        attackBtn.addEventListener('click', () => {
+          if (!ipFilled) {
+            let msg = document.getElementById('fillMsg');
+            if(msg) { msg.innerText = "⚠️ FILL IP & PORT FIRST"; msg.style.color = "#dd9f6c"; setTimeout(() => { if(msg) msg.innerText = ""; }, 1300); }
+            return;
+          }
+          if (attackActive) {
+            let msg = document.getElementById('fillMsg');
+            if(msg) { msg.innerText = "⚠️ STRIKE ALREADY ACTIVE"; msg.style.color = "#dd9f6c"; setTimeout(() => { if(msg) msg.innerText = ""; }, 1300); }
+            return;
+          }
+          launchStrike(currentDuration);
+        });
+      }
+      if (logoutBtn) logoutBtn.addEventListener('click', logoutUser);
+      renderHistoryPanel();
+    }
+    
+    function renderLogin() {
+      attackActive = false; ipFilled = false; attackLogs = [];
+      if (attackInterval) clearInterval(attackInterval);
+      appContainer.innerHTML = `
+        <div class="login-fullscreen">
+          <div class="login-card">
+            <div class="logo-premium">
+              <img src="https://i.postimg.cc/YS4T2BxN/file-000000003a1c7207b41fe4bde79bcb35.png" alt="ANTINA EMBLEM">
+            </div>
+            <div class="server-title">BGMI 4.4 SERVER</div>
+            <div class="input-group">
+              <input type="text" id="accessKey" class="input-premium" placeholder="✧ ENTER ACCESS KEY ✧" autocomplete="off">
+            </div>
+            <div class="btn-group">
+              <button class="btn-mad btn-primary-mad" id="confirmLoginBtn">CONFIRM</button>
+              <button class="btn-mad btn-outline-mad" id="buyKeyBtn">BUY KEY</button>
+            </div>
+            <div id="loadingMsg" class="loading-msg" style="display:none;">AUTHENTICATING...</div>
+            <div id="loginErrorMsg" class="error-msg"></div>
+            <div class="footer-mad" style="margin-top: 1.8rem;">
+              <a href="https://t.me/antinaseller" target="_blank"><i class="fab fa-telegram"></i> TG: @antinaseller</a>
+            </div>
+          </div>
+        </div>
+      `;
+      let confirmBtn = document.getElementById('confirmLoginBtn');
+      let buyBtn = document.getElementById('buyKeyBtn');
+      let keyInput = document.getElementById('accessKey');
+      if (confirmBtn) {
+        confirmBtn.addEventListener('click', () => {
+          let keyVal = keyInput.value.trim();
+          if (!keyVal) {
+            let errDiv = document.getElementById('loginErrorMsg');
+            if (errDiv) {
+              errDiv.innerText = "⚠️ ENTER ACCESS KEY";
+              errDiv.className = 'error-msg error-invalid';
+            }
+            return;
+          }
+          attemptLogin(keyVal);
+        });
+      }
+      if (buyBtn) {
+        buyBtn.addEventListener('click', () => {
+          window.open('https://t.me/antinaseller', '_blank');
+        });
+      }
+      if (keyInput) {
+        keyInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') confirmBtn.click();
+        });
+      }
+    }
+    
+    autoLogin();
+  })();
+</script>
+</body>
+</html>
