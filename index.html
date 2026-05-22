@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>ANTINA SERVER 4.4 | PREMIUM TOOL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #030303;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Premium Custom Background Image */
+    .bg-premium {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.postimg.cc/05cVf4Vv/image-search-1779427907091.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -2;
+    }
+
+    /* Dark cinematic overlay */
+    .bg-premium::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 20%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.75) 100%);
+      pointer-events: none;
+    }
+
+    /* Ambient glow effect */
+    .ambient-gold {
+      position: fixed;
+      width: 70vw;
+      height: 70vw;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08), transparent);
+      border-radius: 50%;
+      top: 10%;
+      right: -20%;
+      filter: blur(70px);
+      z-index: -1;
+    }
+
+    .ambient-gold-2 {
+      position: fixed;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.06), transparent);
+      border-radius: 50%;
+      bottom: 5%;
+      left: -20%;
+      filter: blur(80px);
+      z-index: -1;
+    }
+
+    /* App Container - Mobile optimized */
+    .app-wrapper {
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+      padding: 1rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Glassmorphism Premium Card */
+    .glass-premium {
+      background: rgba(8, 8, 12, 0.55);
+      backdrop-filter: blur(18px);
+      border-radius: 56px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(212, 175, 55, 0.2) inset;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* Login Container */
+    .login-inner {
+      padding: 2rem 1.8rem 2rem;
+      text-align: center;
+    }
+
+    /* Premium Logo - ROUND & BIGGER, PERFECTLY FITTED with NEW LOGO */
+    .logo-gold {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 1.2rem;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #111111, #050505);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(212, 175, 55, 0.8);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.3) inset;
+      overflow: hidden;
+    }
+
+    .logo-gold img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+    }
+
+    /* Metallic Heading */
+    .gold-heading {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #F5E7C8, #D4AF37, #C59B27);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+      margin-bottom: 0.25rem;
+    }
+
+    .gold-sub {
+      font-size: 0.7rem;
+      letter-spacing: 2.5px;
+      color: rgba(212, 175, 55, 0.85);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Input Group */
+    .input-icon-group {
+      position: relative;
+      margin-bottom: 1.6rem;
+    }
+
+    .input-icon-left {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #D4AF37;
+      font-size: 1rem;
+      opacity: 0.9;
+      z-index: 2;
+    }
+
+    .premium-input-field {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 3rem;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1.5px solid rgba(212, 175, 55, 0.5);
+      border-radius: 60px;
+      color: #F5E7C8;
+      font-size: 0.85rem;
+      font-weight: 500;
+      font-family: 'Inter', monospace;
+      outline: none;
+      transition: all 0.25s;
+    }
+
+    .premium-input-field:focus {
+      border-color: #D4AF37;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+      background: rgba(0, 0, 0, 0.85);
+    }
+
+    /* Metallic Login Button */
+    .metallic-btn {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+      border: 1px solid rgba(212, 175, 55, 0.75);
+      border-radius: 60px;
+      color: #D4AF37;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(212, 175, 55, 0.3) inset;
+    }
+
+    .metallic-btn:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(145deg, #252525, #0f0f0f);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.6) inset;
+    }
+
+    /* Telegram Section */
+    .telegram-premium {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .telegram-icon-gold {
+      font-size: 1.5rem;
+      color: #D4AF37;
+      opacity: 0.85;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+    }
+
+    .telegram-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: rgba(212, 175, 55, 0.9);
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      transition: 0.2s;
+    }
+
+    .telegram-link:hover {
+      color: #D4AF37;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Dashboard Styles */
+    .dashboard-container {
+      padding: 1.5rem;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.6rem 1rem;
+      border-radius: 80px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+    }
+
+    /* Logo inside dashboard header - round small with NEW LOGO */
+    .dashboard-logo-small {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mini-logo {
+      width: 36px;
+      height: 36px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1.5px solid #D4AF37;
+    }
+
+    .mini-logo img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .key-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #D4AF37;
+      font-weight: 600;
+      font-size: 0.7rem;
+    }
+
+    .expiry-clock {
+      font-size: 0.85rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #F5E7C8, #D4AF37);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .logout-dashboard {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #D4AF37;
+      padding: 0.35rem 1rem;
+      border-radius: 40px;
+      color: #D4AF37;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.7rem;
+      transition: 0.2s;
+    }
+
+    .logout-dashboard:hover {
+      background: rgba(212, 175, 55, 0.2);
+    }
+
+    .premium-actions {
+      display: flex;
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+
+    .action-card {
+      flex: 1;
+      padding: 0.7rem;
+      background: linear-gradient(145deg, #151515, #080808);
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      border-radius: 60px;
+      color: #D4AF37;
+      font-weight: 800;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.8rem;
+    }
+
+    .action-card:hover {
+      background: #252525;
+      transform: translateY(-2px);
+    }
+
+    .extra-panel {
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 32px;
+      padding: 1rem;
+      margin: 1rem 0;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+    }
+
+    .fill-ip-btn {
+      background: rgba(212, 175, 55, 0.15);
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 60px;
+      font-weight: 700;
+      color: #D4AF37;
+      border: 1px solid #D4AF37;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .fill-ip-btn:hover {
+      background: rgba(212, 175, 55, 0.3);
+    }
+
+    .slider-duration {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 1rem 0;
+    }
+
+    input[type="range"] {
+      flex: 1;
+      height: 4px;
+      -webkit-appearance: none;
+      background: #2a2a2a;
+      border-radius: 5px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #D4AF37;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 6px #D4AF37;
+    }
+
+    .history-premium {
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 28px;
+      padding: 0.8rem;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      font-size: 0.7rem;
+      color: #e6c99c;
+    }
+
+    .countdown-seconds {
+      font-family: monospace;
+      font-weight: 800;
+      color: #D4AF37;
+    }
+
+    .error-msg, .loading-msg {
+      margin-top: 1rem;
+      padding: 0.6rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .error-msg { background: rgba(0,0,0,0.6); color: #ff8a6a; }
+    .loading-msg { background: rgba(0,0,0,0.6); color: #D4AF37; display: none; }
+
+    @keyframes fadeScale {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-premium"></div>
+<div class="ambient-gold"></div>
+<div class="ambient-gold-2"></div>
+
+<div id="appRoot" class="app-wrapper"></div>
+
+<script>
+  (function(){
+    // App State
+    let attackActive = false;
+    let attackTimer = null;
+    let ipFilled = false;
+    let selectedDuration = 60;
+    let attackHistory = [];
+
+    function getDeviceId() {
+      let id = localStorage.getItem('antina_device_id');
+      if (!id) {
+        id = 'device_' + Date.now() + '_' + Math.random().toString(36).substr(2, 8);
+        localStorage.setItem('antina_device_id', id);
+      }
+      return id;
+    }
+
+    async function validateKey(key, deviceId) {
+      try {
+        let res = await fetch('https://itnvhvamjipxtqwfuezm.supabase.co/functions/v1/validate-key', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key: key, device_id: deviceId })
+        });
+        let data = await res.json();
+        console.log('API Response:', data);
+        return data;
+      } catch(e) {
+        console.error('API Error:', e);
+        return { valid: false, error: 'Network error' };
+      }
+    }
+
+    async function attemptLogin(key) {
+      let device = getDeviceId();
+      let errorDiv = document.getElementById('loginError');
+      let loadingDiv = document.getElementById('loadingMsg');
+      if (loadingDiv) loadingDiv.style.display = 'block';
+      if (errorDiv) errorDiv.innerText = '';
+      
+      let result = await validateKey(key, device);
+      
+      if (result && result.valid === true) {
+        let expiry = result.expiry || result.expires_at;
+        if (!expiry) {
+          if (errorDiv) errorDiv.innerText = 'Server error';
+          if (loadingDiv) loadingDiv.style.display = 'none';
+          return;
+        }
+        let expiryMs = typeof expiry === 'string' ? Date.parse(expiry) : expiry;
+        if (typeof expiryMs === 'number' && expiryMs < 1e10) expiryMs *= 1000;
+        
+        localStorage.setItem('antina_key', key);
+        localStorage.setItem('antina_expiry', expiryMs);
+        renderDashboard();
+      } else {
+        let msg = '❌ INVALID LICENCE KEY';
+        if (result?.reason === 'expired') msg = '⌛ LICENCE EXPIRED';
+        else if (result?.reason === 'max_devices') msg = '⚠️ MAX DEVICE REACHED';
+        if (errorDiv) errorDiv.innerText = msg;
+        if (loadingDiv) loadingDiv.style.display = 'none';
+      }
+    }
+
+    function logout() {
+      if (attackTimer) clearInterval(attackTimer);
+      attackActive = false;
+      ipFilled = false;
+      attackHistory = [];
+      localStorage.removeItem('antina_key');
+      localStorage.removeItem('antina_expiry');
+      renderLogin();
+    }
+
+    function formatRemaining(ms) {
+      if (ms <= 0) return 'EXPIRED';
+      let days = Math.floor(ms / 86400000);
+      let hours = Math.floor((ms % 86400000) / 3600000);
+      let mins = Math.floor((ms % 3600000) / 60000);
+      if (days > 0) return `${days}d ${hours}h ${mins}m`;
+      if (hours > 0) return `${hours}h ${mins}m`;
+      return `${mins}m`;
+    }
+
+    function updateExpiryClock() {
+      let expiry = localStorage.getItem('antina_expiry');
+      let timerSpan = document.getElementById('expiryClock');
+      if (!timerSpan) return;
+      if (!expiry) return;
+      let remain = parseInt(expiry) - Date.now();
+      if (remain <= 0) {
+        timerSpan.innerText = 'EXPIRED';
+        logout();
+      } else {
+        timerSpan.innerText = formatRemaining(remain);
+      }
+    }
+
+    function showToast(msg, color) {
+      let toast = document.createElement('div');
+      toast.innerText = msg;
+      toast.style.position = 'fixed';
+      toast.style.bottom = '80px';
+      toast.style.left = '50%';
+      toast.style.transform = 'translateX(-50%)';
+      toast.style.background = color;
+      toast.style.color = '#fff';
+      toast.style.padding = '10px 20px';
+      toast.style.borderRadius = '40px';
+      toast.style.zIndex = '10001';
+      toast.style.fontWeight = 'bold';
+      toast.style.fontSize = '12px';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 2000);
+    }
+
+    function addAttackToHistory(duration, status, endTimestamp = null) {
+      let id = Date.now() + '_' + Math.random().toString(36).substr(2, 4);
+      let newAttack = {
+        id: id,
+        duration: duration,
+        status: status,
+        remaining: (status === 'RUNNING' && endTimestamp) ? Math.max(0, Math.ceil((endTimestamp - Date.now())/1000)) : 0,
+        endTime: endTimestamp
+      };
+      attackHistory.unshift(newAttack);
+      if (attackHistory.length > 10) attackHistory.pop();
+      renderHistoryList();
+      return id;
+    }
+
+    function updateHistoryLiveCountdown() {
+      let updated = false;
+      for (let i = 0; i < attackHistory.length; i++) {
+        let a = attackHistory[i];
+        if (a.status === 'RUNNING' && a.endTime) {
+          let rem = Math.max(0, Math.ceil((a.endTime - Date.now()) / 1000));
+          a.remaining = rem;
+          if (rem <= 0) {
+            a.status = 'COMPLETED';
+            a.remaining = 0;
+            updated = true;
+          } else {
+            updated = true;
+          }
+        }
+      }
+      if (updated) renderHistoryList();
+    }
+
+    function renderHistoryList() {
+      let container = document.getElementById('historyList');
+      if (!container) return;
+      if (attackHistory.length === 0) {
+        container.innerHTML = '<div style="text-align:center; color:#aaa; padding:10px;">No attacks</div>';
+        return;
+      }
+      container.innerHTML = '';
+      attackHistory.forEach(attack => {
+        let item = document.createElement('div');
+        item.className = 'history-item';
+        let timerHtml = '';
+        if (attack.status === 'RUNNING') {
+          timerHtml = `<span class="countdown-seconds">${attack.remaining}s left</span>`;
+        } else if (attack.status === 'COMPLETED') {
+          timerHtml = `<span>✅ Completed</span>`;
+        } else {
+          timerHtml = `<span>⏹️ ${attack.status}</span>`;
+        }
+        item.innerHTML = `
+          <div style="display:flex; gap:8px; align-items:center;">
+            <i class="fas fa-bolt" style="color:#D4AF37; font-size:10px;"></i>
+            <span>⚡ ${attack.duration}s</span>
+          </div>
+          ${timerHtml}
+          <span style="font-size:0.6rem;">${new Date().toLocaleTimeString()}</span>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function startAttack() {
+      if (!ipFilled) { showToast('⚠️ First click FILL IP PORT', '#D4AF37'); return; }
+      if (attackActive) { showToast('⚠️ Attack already running', '#D4AF37'); return; }
+      
+      attackActive = true;
+      let endTime = Date.now() + (selectedDuration * 1000);
+      addAttackToHistory(selectedDuration, 'RUNNING', endTime);
+      showToast(`⚡ ATTACK STARTED (${selectedDuration}s)`, '#D4AF37');
+      
+      if (attackTimer) clearInterval(attackTimer);
+      attackTimer = setInterval(() => {
+        updateHistoryLiveCountdown();
+        let anyRunning = attackHistory.some(a => a.status === 'RUNNING');
+        if (!anyRunning && attackActive) {
+          attackActive = false;
+          clearInterval(attackTimer);
+          attackTimer = null;
+          showToast('✅ ATTACK COMPLETED', '#4CAF50');
+        } else if (!anyRunning) {
+          attackActive = false;
+          if (attackTimer) clearInterval(attackTimer);
+          attackTimer = null;
+        }
+      }, 200);
+    }
+
+    function stopAttack() {
+      if (!attackActive) { showToast('⚠️ No active attack', '#D4AF37'); return; }
+      for (let i = 0; i < attackHistory.length; i++) {
+        if (attackHistory[i].status === 'RUNNING') {
+          attackHistory[i].status = 'STOPPED';
+          attackHistory[i].remaining = 0;
+          break;
+        }
+      }
+      if (attackTimer) clearInterval(attackTimer);
+      attackTimer = null;
+      attackActive = false;
+      renderHistoryList();
+      showToast('⏹️ ATTACK STOPPED', '#FF5722');
+    }
+
+    function fillIp() {
+      ipFilled = true;
+      showToast('✓ IP & PORT FILLED', '#4CAF50');
+      let fillBtn = document.getElementById('fillIpBtn');
+      if (fillBtn) fillBtn.style.background = 'rgba(76, 175, 80, 0.25)';
+    }
+
+    // Dashboard Render WITH NEW LOGO
+    function renderDashboard() {
+      let expiry = localStorage.getItem('antina_expiry');
+      if (!expiry || Date.now() >= parseInt(expiry)) { logout(); return; }
+      
+      let root = document.getElementById('appRoot');
+      root.innerHTML = `
+        <div class="glass-premium" style="animation: fadeScale 0.4s ease;">
+          <div class="dashboard-container">
+            <div class="dashboard-header">
+              <div class="dashboard-logo-small">
+                <div class="mini-logo">
+                  <img src="https://i.postimg.cc/rp7dGxHS/Picsart-26-05-22-11-15-02-954.png" alt="logo">
+                </div>
+                <div class="key-status"><i class="fas fa-crown"></i> KEY: <span class="expiry-clock" id="expiryClock">--</span></div>
+              </div>
+              <div class="logout-dashboard" id="logoutDashBtn"><i class="fas fa-sign-out-alt"></i> EXIT</div>
+            </div>
+            <div class="premium-actions">
+              <div class="action-card" id="startMainBtn"><i class="fas fa-play"></i> START</div>
+              <div class="action-card" id="stopMainBtn"><i class="fas fa-stop"></i> STOP</div>
+            </div>
+            <div id="extraPanel" style="display: none;">
+              <div class="extra-panel">
+                <div class="fill-ip-btn" id="fillIpBtn">📡 FILL IP PORT</div>
+                <div class="slider-duration">
+                  <span style="color:#D4AF37;">⚡ DURATION</span>
+                  <input type="range" id="durationSlider" min="10" max="500" value="60">
+                  <span id="durValue" style="color:#D4AF37; min-width:45px;">60s</span>
+                </div>
+                <div class="action-card" id="launchAttackBtn" style="margin-top: 10px;">🚀 LAUNCH ATTACK</div>
+                <div class="action-card" id="stopAttackBtn" style="margin-top: 8px; background:#1a0f0a;">⏹️ STOP ATTACK</div>
+              </div>
+            </div>
+            <div class="history-premium">
+              <div style="color:#D4AF37; font-size:0.7rem; margin-bottom:8px;"><i class="fas fa-history"></i> ATTACK HISTORY (LIVE COUNTDOWN)</div>
+              <div id="historyList">No attacks</div>
+            </div>
+            <div class="telegram-premium" style="margin-top: 1.2rem;">
+              <i class="fab fa-telegram telegram-icon-gold"></i>
+              <a href="https://t.me/antinaseller" target="_blank" class="telegram-link">@ANTINASELLER</a>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      updateExpiryClock();
+      let expInterval = setInterval(() => { if (document.getElementById('expiryClock')) updateExpiryClock(); else clearInterval(expInterval); }, 1000);
+      
+      let startMain = document.getElementById('startMainBtn');
+      let stopMain = document.getElementById('stopMainBtn');
+      let extraPanelDiv = document.getElementById('extraPanel');
+      
+      startMain.onclick = () => { extraPanelDiv.style.display = 'block'; showToast('✅ Action panel unlocked', '#D4AF37'); };
+      stopMain.onclick = () => {
+        if (attackTimer) clearInterval(attackTimer);
+        attackActive = false; ipFilled = false;
+        extraPanelDiv.style.display = 'none';
+        attackHistory = [];
+        renderHistoryList();
+        showToast('⏹️ System reset', '#FF5722');
+      };
+      
+      let slider = document.getElementById('durationSlider');
+      let durSpan = document.getElementById('durValue');
+      if (slider) {
+        slider.oninput = (e) => { selectedDuration = parseInt(e.target.value); durSpan.innerText = selectedDuration + 's'; };
+      }
+      let fillBtn = document.getElementById('fillIpBtn');
+      let launchBtn = document.getElementById('launchAttackBtn');
+      let stopAttackBtn = document.getElementById('stopAttackBtn');
+      if (fillBtn) fillBtn.onclick = fillIp;
+      if (launchBtn) launchBtn.onclick = startAttack;
+      if (stopAttackBtn) stopAttackBtn.onclick = stopAttack;
+      
+      document.getElementById('logoutDashBtn').onclick = logout;
+      renderHistoryList();
+    }
+
+    // Login Render - ROUND & BIG LOGO WITH NEW IMAGE
+    function renderLogin() {
+      if (attackTimer) clearInterval(attackTimer);
+      let root = document.getElementById('appRoot');
+      root.innerHTML = `
+        <div class="glass-premium" style="animation: fadeScale 0.5s ease;">
+          <div class="login-inner">
+            <div class="logo-gold">
+              <img src="https://i.postimg.cc/rp7dGxHS/Picsart-26-05-22-11-15-02-954.png" alt="ANTINA LOGO">
+            </div>
+            <div class="gold-heading">ANTINA<br>SERVER 4.4</div>
+            <div class="gold-sub">ENTER YOUR LICENCE</div>
+            <div class="input-icon-group">
+              <i class="fas fa-key input-icon-left"></i>
+              <input type="text" id="licenseKey" class="premium-input-field" placeholder="Enter Licence Key..." autocomplete="off">
+            </div>
+            <button class="metallic-btn" id="loginBtn">LOGIN</button>
+            <div id="loadingMsg" class="loading-msg">🔐 VERIFYING...</div>
+            <div id="loginError" class="error-msg"></div>
+            <div class="telegram-premium">
+              <i class="fab fa-telegram telegram-icon-gold"></i>
+              <a href="https://t.me/antinaseller" target="_blank" class="telegram-link">@ANTINASELLER</a>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('loginBtn').onclick = () => {
+        let key = document.getElementById('licenseKey').value.trim();
+        if (!key) { document.getElementById('loginError').innerText = '⚠️ Enter licence key'; return; }
+        attemptLogin(key);
+      };
+      document.getElementById('licenseKey').onkeypress = (e) => { if (e.key === 'Enter') document.getElementById('loginBtn').click(); };
+    }
+
+    let savedKey = localStorage.getItem('antina_key');
+    let savedExp = localStorage.getItem('antina_expiry');
+    if (savedKey && savedExp && Date.now() < parseInt(savedExp)) renderDashboard();
+    else renderLogin();
+  })();
+</script>
+</body>
+</html>
